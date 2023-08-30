@@ -64,7 +64,7 @@ divAtInf <- function(x, y)
     rv[lv] <- 0  # must be a better approach
         
     xnlv <- x[nlv]
-    rv[nlv] <- (xnlv^p)*exp(-(xnlv^p))
+    rv[nlv] <- (xnlv^p[nlv])*exp(-(xnlv^p[nlv]))
     
     rv
 }
@@ -80,7 +80,7 @@ divAtInf <- function(x, y)
     rv[lv] <- 0  # must be a better approach
         
     xnlv <- x[nlv]
-    rv[nlv] <- log(xnlv)*(xnlv^p)*exp(-(xnlv^p))
+    rv[nlv] <- log(xnlv)*(xnlv^p[nlv])*exp(-(xnlv^p[nlv]))
     
     rv
 }
