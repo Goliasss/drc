@@ -111,7 +111,7 @@ if (FALSE)
                   t3 <- exp(-t2)
 
 #                  derMat <- as.matrix(cbind( t1*t3*t2*(log(dose) - log(parmMat[, 4])), 
-                  derMat <- as.matrix(cbind( t1*xexplogx(dose/parmMat[, 4], parmMat[, 1]/rep(1,lengthdose)), 
+                  derMat <- as.matrix(cbind( t1*xexplogx(dose/parmMat[, 4], parmMat[, 1]/rep(1,length(dose))), 
                                              1 - (1 - t3), 
                                              1 - t3, 
                                              -t1*xexpx(dose/parmMat[, 4], parmMat[, 1]/rep(1,length(dose)))*parmMat[, 1]/parmMat[, 4] ))                                             
