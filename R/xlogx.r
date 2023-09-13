@@ -53,18 +53,23 @@ divAtInf <- function(x, y)
 }
 
 
-"xexpx" <- function(x, p)
+"xexpx" <- function(x, p, f=0)
 {
     lv <- (x < 1e-12)
     nlv <- !lv
         
     rv <- rep(0, length(x))
         
+    xPowerp <- x^p    
+
+    ratioVec <- divAtInf(xPowerp, (1 + xPowerp)^f)
+    
+    
     xlv <- x[lv] 
-    rv[lv] <- 0  # must be a better approach
-        
+    rv[lv] <- log( xlv^ratioVec[lv] )
+    
     xnlv <- x[nlv]
-    rv[nlv] <- (xnlv^p[nlv])*exp(-(xnlv^p[nlv]))
+    rv[nlv] <- (xnlv^ratioVec[nlv])*exp(-(xnlv^ratioVec[nlv]))
     
     rv
 }
@@ -75,12 +80,16 @@ divAtInf <- function(x, y)
     nlv <- !lv
         
     rv <- rep(0, length(x))
+    
+    xPowerp <- x^p    
+    
+    ratioVec <- divAtInf(xPowerp, (1 + xPowerp)^f)
         
     xlv <- x[lv] 
-    rv[lv] <- 0  # must be a better approach
-        
+    rv[lv] <- log( xlv^ratioVec[lv] )
+    
     xnlv <- x[nlv]
-    rv[nlv] <- log(xnlv)*(xnlv^p[nlv])*exp(-(xnlv^p[nlv]))
+    rv[nlv] <- log(xnlv)*(xnlv^ratioVec[nlv])*exp(-(xnlv^ratioVec[nlv]))
     
     rv
 }
