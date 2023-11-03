@@ -66,7 +66,7 @@ divAtInf <- function(x, y)
     
     
     xlv <- x[lv] 
-    rv[lv] <- log( xlv^ratioVec[lv] )
+    rv[lv] <- 0
     
     xnlv <- x[nlv]
     rv[nlv] <- (xnlv^ratioVec[nlv])*exp(-(xnlv^ratioVec[nlv]))
@@ -74,7 +74,7 @@ divAtInf <- function(x, y)
     rv
 }
 
-"xexplogx" <- function(x, p)
+"xexplogx" <- function(x, p, f=0)
 {
     lv <- (x < 1e-12)
     nlv <- !lv
@@ -86,7 +86,7 @@ divAtInf <- function(x, y)
     ratioVec <- divAtInf(xPowerp, (1 + xPowerp)^f)
         
     xlv <- x[lv] 
-    rv[lv] <- log( xlv^ratioVec[lv] )
+    rv[lv] <- 0
     
     xnlv <- x[nlv]
     rv[nlv] <- log(xnlv)*(xnlv^ratioVec[nlv])*exp(-(xnlv^ratioVec[nlv]))
